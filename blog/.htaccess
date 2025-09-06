@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirect blog post URLs to post.php
+RewriteRule ^([a-z0-9-]+)/?$ post.php?slug=$1 [L,QSA]
+
+# Redirect category URLs
+RewriteRule ^category/([a-z0-9-]+)/?$ category.php?slug=$1 [L,QSA]
+
+# Redirect tag URLs
+RewriteRule ^tag/([a-z0-9-]+)/?$ tag.php?slug=$1 [L,QSA]
+
+# Redirect author URLs
+RewriteRule ^author/([a-z0-9-]+)/?$ author.php?slug=$1 [L,QSA]
+
+# Handle 404 errors
+ErrorDocument 404 /blog/404.php

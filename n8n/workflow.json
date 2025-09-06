@@ -1,0 +1,238 @@
+{
+  "name": "CSS Blog Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24
+            }
+          ]
+        }
+      },
+      "id": "daily-trigger",
+      "name": "Daily Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// CSS Blog Topic Generator\n// Randomly selects a category and topic for daily blog post\n\nconst categories = {\n  \"CSS Tips\": [\n    \"CSS Custom Properties for Dynamic Theming\",\n    \"Modern CSS Reset Techniques\",\n    \"CSS Clamp() for Responsive Typography\",\n    \"Using CSS Logical Properties\",\n    \"CSS Container Queries Explained\",\n    \"Advanced CSS Selectors You Should Know\",\n    \"CSS Aspect Ratio Property\",\n    \"CSS Scroll Behavior and Scroll Snap\",\n    \"CSS Custom Properties vs CSS Variables\",\n    \"CSS Cascade Layers Explained\"\n  ],\n  \"Animations\": [\n    \"Creating Smooth CSS Hover Effects\",\n    \"CSS Keyframe Animation Best Practices\",\n    \"Transform vs Transition Performance\",\n    \"CSS Animation with View Timeline\",\n    \"Creating Loading Spinners with Pure CSS\",\n    \"Advanced CSS Spring Animations\",\n    \"CSS Motion Path Animation\",\n    \"Parallax Scrolling with CSS\",\n    \"CSS Animation Timing Functions\",\n    \"Creating CSS Micro-interactions\"\n  ],\n  \"UI Components\": [\n    \"Modern CSS Button Designs\",\n    \"Custom CSS Toggle Switches\",\n    \"CSS-only Modal Dialogs\",\n    \"Accessible CSS Form Styling\",\n    \"CSS Card Component Variations\",\n    \"Custom CSS Progress Bars\",\n    \"CSS Tooltip Implementations\",\n    \"Modern CSS Navigation Menus\",\n    \"CSS Dropdown Menus\",\n    \"CSS Tab Components\"\n  ],\n  \"Game UI\": [\n    \"Recreating Cyberpunk 2077 UI Elements\",\n    \"CSS Health Bars Like RPG Games\",\n    \"Retro Arcade Button Effects\",\n    \"Game Inventory Grid with CSS\",\n    \"Sci-Fi HUD Elements in CSS\",\n    \"Pixel Art Buttons with CSS\",\n    \"Game Menu Transitions\",\n    \"CSS Minimap Components\",\n    \"RPG Status Bar Animations\",\n    \"Retro Game Loading Screens\"\n  ],\n  \"Layouts\": [\n    \"CSS Grid vs Flexbox: When to Use What\",\n    \"Modern CSS Layout Patterns\",\n    \"Responsive Design with CSS Grid\",\n    \"CSS Subgrid Explained\",\n    \"Flexbox Alignment Techniques\",\n    \"CSS Multi-column Layouts\",\n    \"Responsive Image Galleries\",\n    \"CSS Masonry Layout\",\n    \"CSS Container Queries for Layouts\",\n    \"Advanced CSS Grid Techniques\"\n  ]\n};\n\n// Get all category names\nconst categoryNames = Object.keys(categories);\n\n// Randomly select a category\nconst selectedCategory = categoryNames[Math.floor(Math.random() * categoryNames.length)];\n\n// Get topics for the selected category\nconst topics = categories[selectedCategory];\n\n// Randomly select a topic\nconst selectedTopic = topics[Math.floor(Math.random() * topics.length)];\n\n// Generate additional metadata\nconst today = new Date();\nconst dateString = today.toLocaleDateString('en-US', { \n  year: 'numeric', \n  month: 'long', \n  day: 'numeric' \n});\n\n// Create tags based on category and topic\nconst categoryTags = {\n  \"CSS Tips\": \"css, tips, techniques, best-practices\",\n  \"Animations\": \"css, animations, effects, transitions\",\n  \"UI Components\": \"css, components, ui, design\",\n  \"Game UI\": \"css, game-ui, gaming, effects\",\n  \"Layouts\": \"css, layout, grid, flexbox, responsive\"\n};\n\nconst baseTags = categoryTags[selectedCategory] || \"css, tutorial\";\nconst topicWords = selectedTopic.toLowerCase().split(' ').filter(word => \n  word.length > 3 && !['css', 'with', 'for', 'and', 'the', 'how', 'to'].includes(word)\n);\nconst additionalTags = topicWords.slice(0, 3).join(', ');\nconst finalTags = baseTags + (additionalTags ? ', ' + additionalTags : '');\n\nreturn {\n  category: selectedCategory,\n  topic: selectedTopic,\n  tags: finalTags,\n  date: dateString,\n  timestamp: today.toISOString()\n};"
+      },
+      "id": "topic-generator",
+      "name": "Topic Generator",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 2000
+        },
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are CSS Kitsune, an expert CSS developer and educator. You create comprehensive, practical CSS tutorials that are easy to follow and implement. Your writing style is clear, engaging, and includes plenty of code examples with explanations."
+            },
+            {
+              "role": "user",
+              "content": "Write a comprehensive CSS tutorial about \"{{ $json.topic }}\" in the {{ $json.category }} category. \n\nRequirements:\n- Write 1500-2000 words\n- Include practical code examples with explanations\n- Use modern CSS techniques and best practices\n- Structure with clear headings and sections\n- Include a brief introduction and conclusion\n- Make it beginner-friendly but include advanced techniques\n- Use proper HTML structure for examples\n- Include responsive design considerations where applicable\n- Add comments to explain complex CSS\n- Focus on practical, real-world applications\n\nFormat the content in clean HTML with proper structure. Include a meta description (150-160 characters) and relevant tags."
+            }
+          ]
+        }
+      },
+      "id": "content-generator",
+      "name": "Content Generator",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1.3,
+      "position": [
+        680,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-credentials",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Content Formatter\n// Processes the AI-generated content and formats it for the API\n\nconst aiResponse = $input.first().json.message.content;\nconst topicData = $('Topic Generator').first().json;\n\n// Extract content from AI response (remove any markdown formatting if present)\nlet content = aiResponse;\n\n// Clean up the content\ncontent = content\n  .replace(/```html\\n?/g, '')\n  .replace(/```\\n?/g, '')\n  .replace(/```css\\n?/g, '')\n  .replace(/```javascript\\n?/g, '')\n  .trim();\n\n// Extract meta description if present\nlet metaDescription = '';\nconst metaMatch = content.match(/<meta[^>]*description[^>]*content=\"([^\"]*)\"/i);\nif (metaMatch) {\n  metaDescription = metaMatch[1];\n  content = content.replace(/<meta[^>]*description[^>]*>/gi, '');\n}\n\n// If no meta description found, create one from the first paragraph\nif (!metaDescription) {\n  const firstParagraph = content.match(/<p[^>]*>([^<]+)<\\/p>/i);\n  if (firstParagraph) {\n    metaDescription = firstParagraph[1]\n      .replace(/<[^>]*>/g, '')\n      .substring(0, 155)\n      .trim();\n    if (metaDescription.length > 150) {\n      metaDescription = metaDescription.substring(0, 150).trim() + '...';\n    }\n  }\n}\n\n// Ensure we have a meta description\nif (!metaDescription) {\n  metaDescription = `Learn ${topicData.topic.toLowerCase()} with this comprehensive CSS tutorial. Includes code examples, best practices, and modern techniques.`;\n}\n\n// Create the final blog post data\nconst blogPost = {\n  api_key: \"58855f86200ac86ed89742daa0f8d17188d23a89aecfe6332982181e6e6d4541\",\n  title: topicData.topic,\n  content: content,\n  category: topicData.category,\n  tags: topicData.tags,\n  meta_description: metaDescription,\n  featured_image: \"\", // Can be enhanced to generate images\n  status: \"published\",\n  author: \"CSS Kitsune\"\n};\n\nreturn blogPost;"
+      },
+      "id": "content-formatter",
+      "name": "Content Formatter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://csskitsune.com/api/blog-post.php",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "={{ $json.api_key }}"
+            },
+            {
+              "name": "title",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "category",
+              "value": "={{ $json.category }}"
+            },
+            {
+              "name": "tags",
+              "value": "={{ $json.tags }}"
+            },
+            {
+              "name": "meta_description",
+              "value": "={{ $json.meta_description }}"
+            },
+            {
+              "name": "featured_image",
+              "value": "={{ $json.featured_image }}"
+            },
+            {
+              "name": "status",
+              "value": "={{ $json.status }}"
+            },
+            {
+              "name": "author",
+              "value": "={{ $json.author }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "send-to-api",
+      "name": "Send to Blog API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Response Handler\n// Processes the API response and logs the result\n\nconst apiResponse = $input.first().json;\nconst originalData = $('Content Formatter').first().json;\n\n// Check if the API call was successful\nif (apiResponse.success) {\n  return {\n    success: true,\n    message: `Blog post \"${originalData.title}\" created successfully!`,\n    post_id: apiResponse.data.id,\n    slug: apiResponse.data.slug,\n    url: apiResponse.data.url,\n    category: originalData.category,\n    tags: originalData.tags,\n    timestamp: new Date().toISOString()\n  };\n} else {\n  return {\n    success: false,\n    error: apiResponse.error || 'Unknown error occurred',\n    title: originalData.title,\n    category: originalData.category,\n    timestamp: new Date().toISOString()\n  };\n}"
+      },
+      "id": "response-handler",
+      "name": "Response Handler",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Daily Trigger": {
+      "main": [
+        [
+          {
+            "node": "Topic Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Topic Generator": {
+      "main": [
+        [
+          {
+            "node": "Content Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Content Generator": {
+      "main": [
+        [
+          {
+            "node": "Content Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Content Formatter": {
+      "main": [
+        [
+          {
+            "node": "Send to Blog API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to Blog API": {
+      "main": [
+        [
+          {
+            "node": "Response Handler",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "css-blog",
+      "name": "CSS Blog"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}
