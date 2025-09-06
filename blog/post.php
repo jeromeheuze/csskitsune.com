@@ -85,6 +85,9 @@ $stmt->close();
 
 $mysqli->close();
 
+// Include the Markdown parser
+require_once '../includes/markdown-fixed.php';
+
 // Parse the content (it might be JSON from the AI)
 $content = $post['content'];
 
@@ -95,8 +98,8 @@ if (is_string($content) && strpos($content, '{"output":"') !== false) {
     if (isset($content_data['output'])) {
         $content = $content_data['output'];
     } else {
-        // If JSON decode fails, try manual extraction
-        preg_match('/"output":"(.*?)"/s', $content, $matches);
+        // If JSON decode fails, try manual extraction with better regex
+        preg_match('/"output":"(.*?)"}$/s', $content, $matches);
         if (isset($matches[1])) {
             $content = $matches[1];
         }
@@ -108,49 +111,17 @@ $content = html_entity_decode($content);
 $content = str_replace('\\n', "\n", $content);
 $content = str_replace('\\"', '"', $content);
 $content = str_replace('\\/', '/', $content);
+$content = str_replace('\\`', '`', $content);
+$content = str_replace('\\*', '*', $content);
+$content = str_replace('\\#', '#', $content);
 
 // Remove any remaining title or category prefixes
 $content = preg_replace('/^[^<]*?Tutorial[^<]*?\|[^<]*?Tutorial[^<]*?/', '', $content);
 $content = preg_replace('/^[^<]*?\|[^<]*?Tutorial[^<]*?/', '', $content);
 $content = preg_replace('/^[^<]*?Tutorial[^<]*?/', '', $content);
 
-// Ensure content starts with proper HTML
-if (!empty($content) && !preg_match('/^<[^>]+>/', $content)) {
-    // Find the first HTML tag and start from there
-    if (preg_match('/<[^>]+>/', $content, $matches, PREG_OFFSET_CAPTURE)) {
-        $content = substr($content, $matches[0][1]);
-    }
-}
-
-// Ensure the content is properly formatted HTML
-// If the content doesn't start with HTML tags, it might be markdown or plain text
-if (!preg_match('/^<[^>]+>/', $content)) {
-    // Convert markdown-style headers to HTML
-    $content = preg_replace('/^# (.+)$/m', '<h1>$1</h1>', $content);
-    $content = preg_replace('/^## (.+)$/m', '<h2>$1</h2>', $content);
-    $content = preg_replace('/^### (.+)$/m', '<h3>$1</h3>', $content);
-    $content = preg_replace('/^#### (.+)$/m', '<h4>$1</h4>', $content);
-    
-    // Convert paragraphs (text not in HTML tags)
-    $content = preg_replace('/^(?!<[^>]+>)(.+)$/m', '<p>$1</p>', $content);
-    
-    // Clean up empty paragraphs
-    $content = preg_replace('/<p><\/p>/', '', $content);
-    $content = preg_replace('/<p>\s*<\/p>/', '', $content);
-}
-
-// Basic cleanup - remove extra whitespace but preserve structure
-$content = preg_replace('/\s+/', ' ', $content);
-$content = preg_replace('/>\s+</', '><', $content);
-
-// Add proper line breaks for readability
-$content = str_replace('</h1>', "</h1>\n\n", $content);
-$content = str_replace('</h2>', "</h2>\n\n", $content);
-$content = str_replace('</h3>', "</h3>\n\n", $content);
-$content = str_replace('</p>', "</p>\n\n", $content);
-$content = str_replace('</div>', "</div>\n", $content);
-$content = str_replace('</style>', "</style>\n\n", $content);
-$content = str_replace('</pre>', "</pre>\n\n", $content);
+// Convert Markdown to HTML
+$content = FixedMarkdown::parse($content);
 
 $content = trim($content);
 ?>

@@ -1,8 +1,8 @@
 <?php
 /**
- * Static Sitemap Generator
+ * Dynamic XML Sitemap Generator
  * 
- * This file generates a static sitemap.xml when accessed
+ * Generates sitemap.xml dynamically from database content
  * 
  * @author CSS Kitsune
  * @version 1.0
