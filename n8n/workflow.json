@@ -23,14 +23,48 @@
     },
     {
       "parameters": {
-        "jsCode": "// CSS Blog Topic Generator\n// Randomly selects a category and topic for daily blog post\n\nconst categories = {\n  \"CSS Tips\": [\n    \"CSS Custom Properties for Dynamic Theming\",\n    \"Modern CSS Reset Techniques\",\n    \"CSS Clamp() for Responsive Typography\",\n    \"Using CSS Logical Properties\",\n    \"CSS Container Queries Explained\",\n    \"Advanced CSS Selectors You Should Know\",\n    \"CSS Aspect Ratio Property\",\n    \"CSS Scroll Behavior and Scroll Snap\",\n    \"CSS Custom Properties vs CSS Variables\",\n    \"CSS Cascade Layers Explained\"\n  ],\n  \"Animations\": [\n    \"Creating Smooth CSS Hover Effects\",\n    \"CSS Keyframe Animation Best Practices\",\n    \"Transform vs Transition Performance\",\n    \"CSS Animation with View Timeline\",\n    \"Creating Loading Spinners with Pure CSS\",\n    \"Advanced CSS Spring Animations\",\n    \"CSS Motion Path Animation\",\n    \"Parallax Scrolling with CSS\",\n    \"CSS Animation Timing Functions\",\n    \"Creating CSS Micro-interactions\"\n  ],\n  \"UI Components\": [\n    \"Modern CSS Button Designs\",\n    \"Custom CSS Toggle Switches\",\n    \"CSS-only Modal Dialogs\",\n    \"Accessible CSS Form Styling\",\n    \"CSS Card Component Variations\",\n    \"Custom CSS Progress Bars\",\n    \"CSS Tooltip Implementations\",\n    \"Modern CSS Navigation Menus\",\n    \"CSS Dropdown Menus\",\n    \"CSS Tab Components\"\n  ],\n  \"Game UI\": [\n    \"Recreating Cyberpunk 2077 UI Elements\",\n    \"CSS Health Bars Like RPG Games\",\n    \"Retro Arcade Button Effects\",\n    \"Game Inventory Grid with CSS\",\n    \"Sci-Fi HUD Elements in CSS\",\n    \"Pixel Art Buttons with CSS\",\n    \"Game Menu Transitions\",\n    \"CSS Minimap Components\",\n    \"RPG Status Bar Animations\",\n    \"Retro Game Loading Screens\"\n  ],\n  \"Layouts\": [\n    \"CSS Grid vs Flexbox: When to Use What\",\n    \"Modern CSS Layout Patterns\",\n    \"Responsive Design with CSS Grid\",\n    \"CSS Subgrid Explained\",\n    \"Flexbox Alignment Techniques\",\n    \"CSS Multi-column Layouts\",\n    \"Responsive Image Galleries\",\n    \"CSS Masonry Layout\",\n    \"CSS Container Queries for Layouts\",\n    \"Advanced CSS Grid Techniques\"\n  ]\n};\n\n// Get all category names\nconst categoryNames = Object.keys(categories);\n\n// Randomly select a category\nconst selectedCategory = categoryNames[Math.floor(Math.random() * categoryNames.length)];\n\n// Get topics for the selected category\nconst topics = categories[selectedCategory];\n\n// Randomly select a topic\nconst selectedTopic = topics[Math.floor(Math.random() * topics.length)];\n\n// Generate additional metadata\nconst today = new Date();\nconst dateString = today.toLocaleDateString('en-US', { \n  year: 'numeric', \n  month: 'long', \n  day: 'numeric' \n});\n\n// Create tags based on category and topic\nconst categoryTags = {\n  \"CSS Tips\": \"css, tips, techniques, best-practices\",\n  \"Animations\": \"css, animations, effects, transitions\",\n  \"UI Components\": \"css, components, ui, design\",\n  \"Game UI\": \"css, game-ui, gaming, effects\",\n  \"Layouts\": \"css, layout, grid, flexbox, responsive\"\n};\n\nconst baseTags = categoryTags[selectedCategory] || \"css, tutorial\";\nconst topicWords = selectedTopic.toLowerCase().split(' ').filter(word => \n  word.length > 3 && !['css', 'with', 'for', 'and', 'the', 'how', 'to'].includes(word)\n);\nconst additionalTags = topicWords.slice(0, 3).join(', ');\nconst finalTags = baseTags + (additionalTags ? ', ' + additionalTags : '');\n\nreturn {\n  category: selectedCategory,\n  topic: selectedTopic,\n  tags: finalTags,\n  date: dateString,\n  timestamp: today.toISOString()\n};"
+        "url": "https://csskitsune.com/api/get-posts.php",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "58855f86200ac86ed89742daa0f8d17188d23a89aecfe6332982181e6e6d4541"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "check-existing-posts",
+      "name": "Check Existing Posts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// CSS Blog Topic Generator with Duplicate Prevention\n// Randomly selects a category and topic for daily blog post\n// Checks against existing posts to avoid duplicates\n\nconst categories = {\n  \"CSS Tips\": [\n    \"CSS Custom Properties for Dynamic Theming\",\n    \"Modern CSS Reset Techniques\",\n    \"CSS Clamp() for Responsive Typography\",\n    \"Using CSS Logical Properties\",\n    \"CSS Container Queries Explained\",\n    \"Advanced CSS Selectors You Should Know\",\n    \"CSS Aspect Ratio Property\",\n    \"CSS Scroll Behavior and Scroll Snap\",\n    \"CSS Custom Properties vs CSS Variables\",\n    \"CSS Cascade Layers Explained\"\n  ],\n  \"Animations\": [\n    \"Creating Smooth CSS Hover Effects\",\n    \"CSS Keyframe Animation Best Practices\",\n    \"Transform vs Transition Performance\",\n    \"CSS Animation with View Timeline\",\n    \"Creating Loading Spinners with Pure CSS\",\n    \"Advanced CSS Spring Animations\",\n    \"CSS Motion Path Animation\",\n    \"Parallax Scrolling with CSS\",\n    \"CSS Animation Timing Functions\",\n    \"Creating CSS Micro-interactions\"\n  ],\n  \"UI Components\": [\n    \"Modern CSS Button Designs\",\n    \"Custom CSS Toggle Switches\",\n    \"CSS-only Modal Dialogs\",\n    \"Accessible CSS Form Styling\",\n    \"CSS Card Component Variations\",\n    \"Custom CSS Progress Bars\",\n    \"CSS Tooltip Implementations\",\n    \"Modern CSS Navigation Menus\",\n    \"CSS Dropdown Menus\",\n    \"CSS Tab Components\"\n  ],\n  \"Game UI\": [\n    \"Recreating Cyberpunk 2077 UI Elements\",\n    \"CSS Health Bars Like RPG Games\",\n    \"Retro Arcade Button Effects\",\n    \"Game Inventory Grid with CSS\",\n    \"Sci-Fi HUD Elements in CSS\",\n    \"Pixel Art Buttons with CSS\",\n    \"Game Menu Transitions\",\n    \"CSS Minimap Components\",\n    \"RPG Status Bar Animations\",\n    \"Retro Game Loading Screens\"\n  ],\n  \"Layouts\": [\n    \"CSS Grid vs Flexbox: When to Use What\",\n    \"Modern CSS Layout Patterns\",\n    \"Responsive Design with CSS Grid\",\n    \"CSS Subgrid Explained\",\n    \"Flexbox Alignment Techniques\",\n    \"CSS Multi-column Layouts\",\n    \"Responsive Image Galleries\",\n    \"CSS Masonry Layout\",\n    \"CSS Container Queries for Layouts\",\n    \"Advanced CSS Grid Techniques\"\n  ]\n};\n\n// Get existing posts from the previous node (if available)\nlet existingTitles = [];\ntry {\n  const existingPosts = $('Check Existing Posts').first().json;\n  if (existingPosts && existingPosts.data && Array.isArray(existingPosts.data)) {\n    existingTitles = existingPosts.data.map(post => post.title.toLowerCase().trim());\n  }\n} catch (error) {\n  // If we can't get existing posts, continue with empty array\n  console.log('Could not fetch existing posts, proceeding without duplicate check');\n}\n\n// Get all category names\nconst categoryNames = Object.keys(categories);\n\n// Try to find a unique topic (max 10 attempts)\nlet selectedCategory, selectedTopic;\nlet attempts = 0;\nconst maxAttempts = 10;\n\nwhile (attempts < maxAttempts) {\n  // Randomly select a category\n  selectedCategory = categoryNames[Math.floor(Math.random() * categoryNames.length)];\n  \n  // Get topics for the selected category\n  const topics = categories[selectedCategory];\n  \n  // Randomly select a topic\n  selectedTopic = topics[Math.floor(Math.random() * topics.length)];\n  \n  // Check if this topic already exists\n  if (!existingTitles.includes(selectedTopic.toLowerCase().trim())) {\n    break; // Found a unique topic\n  }\n  \n  attempts++;\n}\n\n// If we couldn't find a unique topic after max attempts, use the last selected one\n// The API will handle the duplicate check as a fallback\n\n// Generate additional metadata\nconst today = new Date();\nconst dateString = today.toLocaleDateString('en-US', { \n  year: 'numeric', \n  month: 'long', \n  day: 'numeric' \n});\n\n// Create tags based on category and topic\nconst categoryTags = {\n  \"CSS Tips\": \"css, tips, techniques, best-practices\",\n  \"Animations\": \"css, animations, effects, transitions\",\n  \"UI Components\": \"css, components, ui, design\",\n  \"Game UI\": \"css, game-ui, gaming, effects\",\n  \"Layouts\": \"css, layout, grid, flexbox, responsive\"\n};\n\nconst baseTags = categoryTags[selectedCategory] || \"css, tutorial\";\nconst topicWords = selectedTopic.toLowerCase().split(' ').filter(word => \n  word.length > 3 && !['css', 'with', 'for', 'and', 'the', 'how', 'to'].includes(word)\n);\nconst additionalTags = topicWords.slice(0, 3).join(', ');\nconst finalTags = baseTags + (additionalTags ? ', ' + additionalTags : '');\n\nreturn {\n  category: selectedCategory,\n  topic: selectedTopic,\n  tags: finalTags,\n  date: dateString,\n  timestamp: today.toISOString(),\n  duplicateCheckAttempts: attempts\n};"
       },
       "id": "topic-generator",
       "name": "Topic Generator",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        460,
+        680,
         300
       ]
     },
@@ -49,7 +83,7 @@
             },
             {
               "role": "user",
-              "content": "Write a comprehensive CSS tutorial about \"{{ $json.topic }}\" in the {{ $json.category }} category. \n\nRequirements:\n- Write 1500-2000 words\n- Include practical code examples with explanations\n- Use modern CSS techniques and best practices\n- Structure with clear headings and sections\n- Include a brief introduction and conclusion\n- Make it beginner-friendly but include advanced techniques\n- Use proper HTML structure for examples\n- Include responsive design considerations where applicable\n- Add comments to explain complex CSS\n- Focus on practical, real-world applications\n\nFormat the content in clean HTML with proper structure. Include a meta description (150-160 characters) and relevant tags."
+              "content": "Write a comprehensive CSS tutorial about \"{{ $json.topic }}\" in the {{ $json.category }} category. \n\nIMPORTANT FORMATTING REQUIREMENTS:\n- Write 1500-2000 words\n- Start directly with the content - NO title or category prefixes\n- Use proper HTML structure: <h1>, <h2>, <h3>, <p>, <div>, etc.\n- Wrap ALL CSS code in <style> tags\n- Wrap ALL code examples in <pre><code> tags\n- Include practical examples with explanations\n- Use modern CSS techniques and best practices\n- Structure with clear headings and sections\n- Include a brief introduction and conclusion\n- Make it beginner-friendly but include advanced techniques\n- Include responsive design considerations where applicable\n- Add comments to explain complex CSS\n- Focus on practical, real-world applications\n\nFORMAT EXAMPLE:\n<h1>Main Title</h1>\n<p>Introduction paragraph...</p>\n<h2>Section Title</h2>\n<style>\n.your-css-code {\n  property: value;\n}\n</style>\n<pre><code>\nYour HTML code here\n</code></pre>\n<p>Explanation text...</p>\n\nDo NOT include any title prefixes, category information, or meta descriptions in the content. Start directly with the HTML structure."
             }
           ]
         }
@@ -71,7 +105,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Content Formatter\n// Processes the AI-generated content and formats it for the API\n\nconst aiResponse = $input.first().json.message.content;\nconst topicData = $('Topic Generator').first().json;\n\n// Extract content from AI response (remove any markdown formatting if present)\nlet content = aiResponse;\n\n// Clean up the content\ncontent = content\n  .replace(/```html\\n?/g, '')\n  .replace(/```\\n?/g, '')\n  .replace(/```css\\n?/g, '')\n  .replace(/```javascript\\n?/g, '')\n  .trim();\n\n// Extract meta description if present\nlet metaDescription = '';\nconst metaMatch = content.match(/<meta[^>]*description[^>]*content=\"([^\"]*)\"/i);\nif (metaMatch) {\n  metaDescription = metaMatch[1];\n  content = content.replace(/<meta[^>]*description[^>]*>/gi, '');\n}\n\n// If no meta description found, create one from the first paragraph\nif (!metaDescription) {\n  const firstParagraph = content.match(/<p[^>]*>([^<]+)<\\/p>/i);\n  if (firstParagraph) {\n    metaDescription = firstParagraph[1]\n      .replace(/<[^>]*>/g, '')\n      .substring(0, 155)\n      .trim();\n    if (metaDescription.length > 150) {\n      metaDescription = metaDescription.substring(0, 150).trim() + '...';\n    }\n  }\n}\n\n// Ensure we have a meta description\nif (!metaDescription) {\n  metaDescription = `Learn ${topicData.topic.toLowerCase()} with this comprehensive CSS tutorial. Includes code examples, best practices, and modern techniques.`;\n}\n\n// Create the final blog post data\nconst blogPost = {\n  api_key: \"58855f86200ac86ed89742daa0f8d17188d23a89aecfe6332982181e6e6d4541\",\n  title: topicData.topic,\n  content: content,\n  category: topicData.category,\n  tags: topicData.tags,\n  meta_description: metaDescription,\n  featured_image: \"\", // Can be enhanced to generate images\n  status: \"published\",\n  author: \"CSS Kitsune\"\n};\n\nreturn blogPost;"
+        "jsCode": "// Content Formatter\n// Processes the AI-generated content and formats it for the API\n\n// Get the AI response data - handle different possible structures\nconst aiResponse = $input.first().json;\nconst topicData = $('Topic Generator').first().json;\n\n// Extract content from AI response - handle different response formats\nlet content = '';\nif (aiResponse.message && aiResponse.message.content) {\n  content = aiResponse.message.content;\n} else if (aiResponse.content) {\n  content = aiResponse.content;\n} else if (typeof aiResponse === 'string') {\n  content = aiResponse;\n} else {\n  // Fallback - try to find content in the response\n  content = JSON.stringify(aiResponse);\n}\n\n// Clean up the content - remove any markdown formatting\ncontent = content\n  .replace(/```html\\n?/g, '')\n  .replace(/```\\n?/g, '')\n  .replace(/```css\\n?/g, '')\n  .replace(/```javascript\\n?/g, '')\n  .trim();\n\n// Remove any title or category prefixes that might still be there\ncontent = content.replace(/^[^<]*?Tutorial[^<]*?\\|[^<]*?Tutorial[^<]*?/, '');\ncontent = content.replace(/^[^<]*?\\|[^<]*?Tutorial[^<]*?/, '');\ncontent = content.replace(/^[^<]*?Tutorial[^<]*?/, '');\n\n// Ensure content starts with proper HTML\nif (!content.startsWith('<')) {\n  // Find the first HTML tag and start from there\n  const firstTag = content.match(/<[^>]+>/);\n  if (firstTag) {\n    content = content.substring(content.indexOf(firstTag[0]));\n  }\n}\n\n// Extract meta description from the first paragraph\nlet metaDescription = '';\nconst firstParagraph = content.match(/<p[^>]*>([^<]+)<\\/p>/i);\nif (firstParagraph) {\n  metaDescription = firstParagraph[1]\n    .replace(/<[^>]*>/g, '')\n    .substring(0, 155)\n    .trim();\n  if (metaDescription.length > 150) {\n    metaDescription = metaDescription.substring(0, 150).trim() + '...';\n  }\n}\n\n// Ensure we have a meta description\nif (!metaDescription) {\n  metaDescription = `Learn ${topicData.topic.toLowerCase()} with this comprehensive CSS tutorial. Includes code examples, best practices, and modern techniques.`;\n}\n\n// Create the final blog post data\nconst blogPost = {\n  api_key: \"58855f86200ac86ed89742daa0f8d17188d23a89aecfe6332982181e6e6d4541\",\n  title: topicData.topic,\n  content: content,\n  category: topicData.category,\n  tags: topicData.tags,\n  meta_description: metaDescription,\n  featured_image: \"\", // Can be enhanced to generate images\n  status: \"published\",\n  author: \"CSS Kitsune\"\n};\n\nreturn blogPost;"
       },
       "id": "content-formatter",
       "name": "Content Formatter",
@@ -164,6 +198,17 @@
   ],
   "connections": {
     "Daily Trigger": {
+      "main": [
+        [
+          {
+            "node": "Check Existing Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Existing Posts": {
       "main": [
         [
           {
