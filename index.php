@@ -318,12 +318,12 @@ $featuredPosts = array_slice(get_all_posts(), 0, 3);
             <aside class="platforms-panel">
                 <h2>Current Focus</h2>
                 <div class="platform-grid">
-                    <span class="platform-pill"><span>OBS &amp; Streamers</span><span>Overlays</span></span>
-                    <span class="platform-pill"><span>Electron &amp; Tauri</span><span>Desktop</span></span>
-                    <span class="platform-pill"><span>Godot &amp; Unity</span><span>Game UI</span></span>
-                    <span class="platform-pill"><span>ESP32 &amp; Pi</span><span>Embedded</span></span>
-                    <span class="platform-pill"><span>Discord Bots</span><span>Embeds</span></span>
-                    <span class="platform-pill"><span>Phaser</span><span>Web Games</span></span>
+                    <span class="platform-pill"><span>OBS &amp; Streamers Overlays</span></span>
+                    <span class="platform-pill"><span>Electron &amp; Tauri Desktop</span></span>
+                    <span class="platform-pill"><span>Godot &amp; Unity Game UI</span></span>
+                    <span class="platform-pill"><span>ESP32 &amp; Pi Embedded</span></span>
+                    <span class="platform-pill"><span>Discord Bots Embeds</span></span>
+                    <span class="platform-pill"><span>Phaser Web Games</span></span>
                 </div>
             </aside>
         </section>

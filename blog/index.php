@@ -93,7 +93,6 @@ $platformColors = [
                         <p>Deep, technical walkthroughs for styling OBS overlays, Electron desktops, Godot HUDs, IoT dashboards, and other ecosystems powered by CSS.</p>
                         <div class="search-bar">
                             <input type="search" id="post-search" placeholder="Search OBS, Electron, Godot, ESP32…" aria-label="Search posts">
-                            <div id="search-results" class="search-results" hidden></div>
                         </div>
                     </section>
 
@@ -286,13 +285,41 @@ $platformColors = [
             renderSearchResults(value, results);
         };
 
+        const hideSearchResults = () => {
+            if (resultsPanel) {
+                resultsPanel.hidden = true;
+                resultsPanel.innerHTML = '';
+            }
+        };
+
         searchInput?.addEventListener('input', handleSearchInput);
         searchInput?.addEventListener('focus', loadSearchIndex);
+        
+        // Hide search results when clicking outside
         document.addEventListener('click', (event) => {
             if (!resultsPanel?.contains(event.target) && event.target !== searchInput) {
-                resultsPanel.hidden = true;
+                hideSearchResults();
             }
         });
+
+        // Hide search results on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                hideSearchResults();
+            }, 100);
+        }, { passive: true });
+
+        // Hide search results when clicking on post cards or content
+        const mainContent = document.querySelector('.blog-content');
+        if (mainContent) {
+            mainContent.addEventListener('click', (event) => {
+                if (event.target.closest('.post-card') || event.target.closest('.pagination')) {
+                    hideSearchResults();
+                }
+            });
+        }
     </script>
 </body>
 </html>
