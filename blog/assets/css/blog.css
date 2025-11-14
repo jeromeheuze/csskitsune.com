@@ -2,19 +2,27 @@
 
 /* CSS Variables for theming - Matching CSSKitsune homepage */
 :root {
-    --primary-color: #FF0000;
-    --secondary-color: #FFFFFF;
-    --accent-color: #FF0000;
-    --text-color: #FFFFFF;
-    --text-light: #CCCCCC;
-    --bg-color: #000000;
-    --bg-light: #1A1A1A;
-    --bg-card: #111111;
-    --border-color: #333333;
-    --shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.3), 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-    --border-radius: 8px;
+    --primary: #ff5af0;
+    --primary-dark: #b832b0;
+    --text: #f7f7ff;
+    --text-muted: #c2c2d6;
+    --bg: #0b0d15;
+    --bg-glass: rgba(11, 13, 21, 0.72);
+    --bg-card: rgba(10, 13, 24, 0.78);
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 20px 60px rgba(12, 15, 28, 0.55);
+    --shadow-lg: 0 25px 70px rgba(12, 15, 28, 0.7);
+    --radius: 18px;
     --transition: all 0.3s ease;
+    
+    /* Legacy aliases for compatibility */
+    --primary-color: var(--primary);
+    --text-color: var(--text);
+    --text-light: var(--text-muted);
+    --bg-color: var(--bg);
+    --bg-light: var(--bg-card);
+    --border-color: var(--border);
+    --border-radius: var(--radius);
 }
 
 /* Reset and base styles */
@@ -25,14 +33,14 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(26, 26, 26, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(26, 26, 26, 0.2) 0%, transparent 50%);
-    background-attachment: fixed;
+    color: var(--text);
+    background: var(--bg);
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 20% 20%, rgba(255, 90, 240, 0.12), transparent 45%),
+                      radial-gradient(circle at 80% 10%, rgba(48, 148, 255, 0.1), transparent 50%),
+                      radial-gradient(circle at 50% 80%, rgba(122, 255, 204, 0.08), transparent 55%);
 }
 
 p, ul li, ol li, blockquote, pre, table, figure {
@@ -47,11 +55,17 @@ p, ul li, ol li, blockquote, pre, table, figure {
 
 /* Header */
 .blog-header {
-    background: var(--bg-color);
-    color: var(--text-color);
-    padding: 2rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(16px);
+    background: rgba(8, 9, 14, 0.85);
+    color: var(--text);
+    padding: 1.2rem 0;
     box-shadow: var(--shadow);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
 }
 
 .header-content {
@@ -63,44 +77,46 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .logo h1 {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     margin-bottom: 0.25rem;
 }
 
 .logo h1 a {
-    color: var(--text-color);
+    color: var(--text);
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .logo p {
     font-size: 0.9rem;
-    opacity: 0.9;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
 }
 
 .main-nav {
     display: flex;
-    gap: 2rem;
+    gap: 1.8rem;
+    font-size: 0.95rem;
 }
 
 .main-nav a {
-    color: var(--text-color);
+    color: var(--text-muted);
     text-decoration: none;
     font-weight: 500;
-    transition: var(--transition);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
+    transition: color 0.2s ease;
+    padding: 0.5rem 0;
 }
 
 .main-nav a:hover {
-    background-color: var(--bg-light);
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 /* Main layout */
 .blog-main {
-    padding: 3rem 0;
+    padding-top: 100px;
+    padding-bottom: 3rem;
     min-height: calc(100vh - 200px);
 }
 
@@ -114,24 +130,104 @@ p, ul li, ol li, blockquote, pre, table, figure {
 .hero-section {
     text-align: center;
     margin-bottom: 3rem;
-    padding: 2rem;
-    background: var(--bg-card);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
 }
 
 .hero-section h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: 1rem;
-    color: var(--text-color);
+    color: var(--text);
     font-weight: 700;
 }
 
 .hero-section p {
     font-size: 1.1rem;
-    color: var(--text-light);
-    max-width: 600px;
+    color: var(--text-muted);
+    max-width: 700px;
     margin: 0 auto;
+    line-height: 1.8;
+}
+
+.search-bar {
+    position: relative;
+    max-width: 540px;
+    margin: 1.5rem auto 0 auto;
+}
+
+.search-bar input[type="search"] {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.search-bar input[type="search"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 90, 240, 0.2);
+}
+
+.search-results {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 0.75rem;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-height: 360px;
+    overflow-y: auto;
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    z-index: 10;
+}
+
+.search-results__item {
+    display: block;
+    text-align: left;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.75rem;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: var(--transition);
+    background: var(--bg-card);
+}
+
+.search-results__item strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--text);
+}
+
+.search-results__item span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.search-results__item:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.search-results__empty {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
 }
 
 /* Posts grid */
@@ -142,15 +238,16 @@ p, ul li, ol li, blockquote, pre, table, figure {
 
 .post-card {
     background: var(--bg-card);
-    border-radius: var(--border-radius);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius);
     padding: 2rem;
     box-shadow: var(--shadow);
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border);
 }
 
 .post-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
@@ -163,41 +260,41 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .category-badge {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    color: var(--text);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .post-date {
-    color: var(--text-light);
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
 .post-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 .post-title a {
-    color: var(--text-color);
+    color: var(--text);
     text-decoration: none;
-    transition: var(--transition);
+    transition: color 0.2s ease;
 }
 
 .post-title a:hover {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .post-excerpt {
-    color: var(--text-light);
+    color: var(--text-muted);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .post-tags {
@@ -208,12 +305,12 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .tag {
-    background-color: var(--bg-light);
-    color: var(--text-light);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
     padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 0.8rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
 }
 
 .post-footer {
@@ -221,34 +318,42 @@ p, ul li, ol li, blockquote, pre, table, figure {
     justify-content: space-between;
     align-items: center;
     padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .author {
-    color: var(--text-light);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.reading-time {
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
 .read-more {
-    color: var(--primary-color);
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
+    transition: color 0.2s ease;
 }
 
 .read-more:hover {
-    color: var(--secondary-color);
+    color: var(--text);
 }
 
 /* Single post styles */
 .single-post {
     max-width: 800px;
     margin: 0 auto;
-    background: var(--bg-card);
-    border-radius: var(--border-radius);
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius);
     padding: 3rem;
     box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
 }
 
 .post-header {
@@ -262,21 +367,22 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .post-views {
-    color: var(--text-light);
+    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
 .single-post .post-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: 1.5rem;
     line-height: 1.2;
-    color: var(--text-color);
+    color: var(--text);
 }
 
 .post-content {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 3rem;
+    color: var(--text-muted);
 }
 
 .post-content h1,
@@ -286,8 +392,9 @@ p, ul li, ol li, blockquote, pre, table, figure {
 .post-content h5,
 .post-content h6 {
     margin: 2rem 0 1rem 0;
-    color: var(--text-color);
+    color: var(--text);
     line-height: 1.3;
+    font-weight: 600;
 }
 
 .post-content h1 { font-size: 2rem; }
@@ -297,12 +404,14 @@ p, ul li, ol li, blockquote, pre, table, figure {
 
 .post-content p {
     margin-bottom: 1.5rem;
+    color: var(--text-muted);
 }
 
 .post-content ul,
 .post-content ol {
     margin: 1.5rem 0;
     padding-left: 2rem;
+    color: var(--text-muted);
 }
 
 .post-content li {
@@ -310,33 +419,36 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .post-content blockquote {
-    border-left: 4px solid var(--primary-color);
+    border-left: 4px solid var(--primary);
     padding-left: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
-    color: var(--text-light);
-    background: var(--bg-light);
+    color: var(--text-muted);
+    background: var(--bg-card);
     padding: 1.5rem;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    border: 1px solid var(--border);
 }
 
 .post-content code {
-    background-color: var(--bg-light);
+    background-color: var(--bg-card);
     padding: 0.2rem 0.4rem;
-    border-radius: 4px;
+    border-radius: 6px;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 0.9em;
-    color: var(--primary-color);
+    color: var(--primary);
+    border: 1px solid var(--border);
 }
 
 .post-content pre {
-    background-color: #1e1e1e;
+    background-color: rgba(10, 13, 24, 0.95);
     color: #d4d4d4;
     padding: 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     overflow-x: auto;
     margin: 2rem 0;
     position: relative;
+    border: 1px solid var(--border);
 }
 
 .post-content pre code {
@@ -350,55 +462,58 @@ p, ul li, ol li, blockquote, pre, table, figure {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: var(--primary-color);
-    color: var(--text-color);
+    background: var(--primary);
+    color: #05060d;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 0.8rem;
-    transition: var(--transition);
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 90, 240, 0.3);
 }
 
 .copy-code-btn:hover {
-    background: var(--bg-light);
-    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 90, 240, 0.4);
 }
 
 .post-content a {
-    color: var(--primary-color);
+    color: var(--primary);
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: var(--transition);
+    transition: border-color 0.2s ease;
 }
 
 .post-content a:hover {
-    border-bottom-color: var(--primary-color);
+    border-bottom-color: var(--primary);
 }
 
 .post-content img {
     max-width: 100%;
     height: auto;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     margin: 2rem 0;
     box-shadow: var(--shadow);
+    border: 1px solid var(--border);
 }
 
 /* Post footer */
 .post-footer {
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
     padding-top: 2rem;
     margin-top: 3rem;
 }
 
 .post-author {
     margin-bottom: 2rem;
-    color: var(--text-light);
+    color: var(--text-muted);
 }
 
 .post-share h4 {
     margin-bottom: 1rem;
-    color: var(--text-color);
+    color: var(--text);
 }
 
 .share-buttons {
@@ -408,11 +523,11 @@ p, ul li, ol li, blockquote, pre, table, figure {
 
 .share-btn {
     padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
-    color: var(--text-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: var(--text);
 }
 
 .share-btn.twitter { background-color: #1DA1F2; }
@@ -428,13 +543,15 @@ p, ul li, ol li, blockquote, pre, table, figure {
 .related-posts {
     margin-top: 4rem;
     padding-top: 3rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
 }
 
 .related-posts h3 {
     margin-bottom: 2rem;
-    color: var(--text-color);
+    color: var(--text);
     text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
 }
 
 .related-grid {
@@ -445,15 +562,16 @@ p, ul li, ol li, blockquote, pre, table, figure {
 
 .related-post {
     background: var(--bg-card);
+    backdrop-filter: blur(16px);
     padding: 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .related-post:hover {
-    transform: translateY(-2px);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
@@ -467,17 +585,23 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .related-post h4 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .related-post h4 a {
-    color: var(--text-color);
+    color: var(--text);
     text-decoration: none;
-    transition: var(--transition);
+    transition: color 0.2s ease;
 }
 
 .related-post h4 a:hover {
-    color: var(--primary-color);
+    color: var(--primary);
+}
+
+.related-post p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* Sidebar */
@@ -488,17 +612,25 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .sidebar-widget {
-    background: var(--bg-card);
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
     padding: 2rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius);
     box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
 }
 
 .sidebar-widget h3 {
     margin-bottom: 1.5rem;
-    color: var(--text-color);
+    color: var(--text);
     font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.sidebar-widget p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
 .category-list {
@@ -510,26 +642,27 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .category-list a {
-    color: var(--text-color);
+    color: var(--text);
     text-decoration: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 0;
-    transition: var(--transition);
+    transition: color 0.2s ease;
     border-bottom: 1px solid transparent;
 }
 
 .category-list a:hover {
-    border-bottom-color: var(--primary-color);
+    color: var(--primary);
 }
 
 .post-count {
-    background: var(--bg-light);
-    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
     padding: 0.25rem 0.5rem;
     border-radius: 12px;
     font-size: 0.8rem;
+    border: 1px solid var(--border);
 }
 
 .recent-posts {
@@ -549,20 +682,20 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .recent-posts a {
-    color: var(--text-color);
+    color: var(--text);
     text-decoration: none;
     font-weight: 500;
-    transition: var(--transition);
+    transition: color 0.2s ease;
     display: block;
     margin-bottom: 0.25rem;
 }
 
 .recent-posts a:hover {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .recent-posts small {
-    color: var(--text-light);
+    color: var(--text-muted);
     font-size: 0.8rem;
 }
 
@@ -574,27 +707,27 @@ p, ul li, ol li, blockquote, pre, table, figure {
     gap: 1rem;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
 }
 
 .pagination-btn {
-    background: var(--primary-color);
-    color: var(--text-color);
+    background: linear-gradient(135deg, var(--primary), #4f46e5);
+    color: #05060d;
     padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 35px rgba(79, 70, 229, 0.4);
 }
 
 .pagination-btn:hover {
-    background: var(--bg-light);
-    color: var(--primary-color);
     transform: translateY(-2px);
+    box-shadow: 0 15px 45px rgba(79, 70, 229, 0.5);
 }
 
 .pagination-info {
-    color: var(--text-light);
+    color: var(--text-muted);
     font-weight: 500;
 }
 
@@ -605,46 +738,51 @@ p, ul li, ol li, blockquote, pre, table, figure {
 }
 
 .back-to-blog {
-    background: var(--bg-light);
-    color: var(--text-color);
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius);
+    background: var(--bg-card);
+    color: var(--text);
+    padding: 0.85rem 1.4rem;
+    border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--border);
+    display: inline-block;
 }
 
 .back-to-blog:hover {
-    background: var(--primary-color);
-    color: var(--text-color);
+    background: var(--primary);
+    color: #05060d;
     transform: translateY(-2px);
+    box-shadow: 0 10px 35px rgba(255, 90, 240, 0.4);
 }
 
 /* No posts */
 .no-posts {
     text-align: center;
     padding: 4rem 2rem;
-    color: var(--text-light);
+    color: var(--text-muted);
 }
 
 .no-posts h3 {
     margin-bottom: 1rem;
-    color: var(--text-color);
+    color: var(--text);
+    font-size: 1.5rem;
 }
 
 /* Footer */
 .blog-footer {
-    background: var(--bg-light);
+    background: rgba(8, 9, 14, 0.8);
+    backdrop-filter: blur(16px);
     padding: 2rem 0;
     text-align: center;
-    color: var(--text-light);
-    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
     margin-top: 4rem;
 }
 
 .blog-footer p {
     margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
 
 /* Responsive design */
