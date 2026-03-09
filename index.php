@@ -1,14 +1,34 @@
 <?php
+require_once __DIR__ . '/includes/seo-config.php';
 $success = isset($_GET['s']) && $_GET['s'] === '1';
 $error = isset($_GET['e']) ? (int) $_GET['e'] : 0;
+$canonical = SITE_URL . '/';
+$title = 'CSSKitsune — The Japanese Design System for AI-Era Developers';
+$description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and AI-ready prompts for authentic Japanese-style UI.';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSSKitsune — The Japanese Design System for AI-Era Developers</title>
-  <meta name="description" content="Shizen Design System: aesthetic tokens, cultural vocabulary, and AI-ready prompts for authentic Japanese-style UI.">
+  <title><?php echo htmlspecialchars($title); ?></title>
+  <meta name="description" content="<?php echo htmlspecialchars($description); ?>">
+  <link rel="canonical" href="<?php echo htmlspecialchars($canonical); ?>">
+  <meta name="theme-color" content="#F5F0E8">
+  <meta name="keywords" content="Japanese design system, Shizen, CSS tokens, AI prompts, wabi-sabi UI, Japanese aesthetics, design tokens, Cursor prompts, Figma Japanese style">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<?php echo htmlspecialchars($canonical); ?>">
+  <meta property="og:title" content="<?php echo htmlspecialchars($title); ?>">
+  <meta property="og:description" content="<?php echo htmlspecialchars($description); ?>">
+  <meta property="og:image" content="<?php echo htmlspecialchars(SITE_DEFAULT_OG_IMAGE); ?>">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="<?php echo htmlspecialchars(SITE_NAME); ?>">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?php echo htmlspecialchars($title); ?>">
+  <meta name="twitter:description" content="<?php echo htmlspecialchars($description); ?>">
+  <meta name="twitter:image" content="<?php echo htmlspecialchars(SITE_DEFAULT_OG_IMAGE); ?>">
   <style>
     :root {
       --bg: #F5F0E8;
@@ -19,6 +39,20 @@ $error = isset($_GET['e']) ? (int) $_GET['e'] : 0;
       --ink: #1a1a1a;
     }
     * { box-sizing: border-box; }
+    .skip-link {
+      position: absolute;
+      top: -2.5rem;
+      left: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--accent);
+      color: var(--paper);
+      font-size: 0.9rem;
+      text-decoration: none;
+      z-index: 100;
+      border-radius: 4px;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0.5rem; outline: 2px solid var(--ink); outline-offset: 2px; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -31,6 +65,7 @@ $error = isset($_GET['e']) ? (int) $_GET['e'] : 0;
       justify-content: center;
       padding: 1.5rem;
       line-height: 1.6;
+      position: relative;
     }
     main {
       max-width: 36rem;
@@ -182,9 +217,43 @@ $error = isset($_GET['e']) ? (int) $_GET['e'] : 0;
       border-top: 1px solid #e5e0d8;
     }
   </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F688QNHLXE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-F688QNHLXE');
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "<?php echo htmlspecialchars(SITE_NAME); ?>",
+      "url": "<?php echo htmlspecialchars(SITE_URL); ?>",
+      "description": "<?php echo htmlspecialchars($description); ?>",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": "<?php echo htmlspecialchars(SITE_URL); ?>/prompt-builder.php" },
+        "query-input": "required name=platform"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "<?php echo htmlspecialchars(SITE_NAME); ?>",
+      "url": "<?php echo htmlspecialchars(SITE_URL); ?>",
+      "description": "Shizen Design System — Japanese aesthetic tokens and AI-ready prompts for developers and designers."
+    }
+    </script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="1ehiM7USOi9S04jmBe0uJA" async></script>
 </head>
 <body>
-  <main>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <main id="main">
     <svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" aria-label="CSSKitsune logo">
       <path d="M596.29,194.4s18.77-40.38,12.72-98.27c-111.94,55.97-153.69,166.31-153.69,166.31,43.61-32.82,95.09-53.32,140.97-68.04Z"/>
       <path d="M410.14,669.56s-83.04,44.65-177.57,21.09c-90.76-22.62-167.83-59.06-167.83-59.06,0,0,34.55,76.87,122.16,118.69,76.79,36.65,194.88,19.78,223.24-80.71Z"/>
@@ -218,6 +287,11 @@ $error = isset($_GET['e']) ? (int) $_GET['e'] : 0;
     <div class="teaser">
       <strong>Teaser:</strong> One prompt, one palette — wabi-sabi neutrals, ma-based spacing, and copy-paste ready output for Cursor, Figma, Webflow, and more.
     </div>
+    <p style="margin: 0 0 2rem; font-size: 0.95rem;">
+      <a href="prompt-builder.php" style="color: var(--accent); font-weight: 500;">→ Shizen Prompt Builder</a> ·
+      <a href="prompt-pack-wabi-sabi.php" style="color: var(--accent);">Free Wabi-Sabi pack</a> ·
+      <a href="spec.php" style="color: var(--accent);">Spec v1.0</a>
+    </p>
   </main>
   <footer>
     <div class="network">
@@ -262,7 +336,7 @@ $error = isset($_GET['e']) ? (int) $_GET['e'] : 0;
       </div>
     </div>
     <div class="copyright">
-      &copy; <?php echo date('Y'); ?> CSSKitsune &mdash; Part of the Japan Empire Network
+      &copy; <?php echo date('Y'); ?> CSSKitsune &mdash; Part of the Japan Culture Network
     </div>
   </footer>
 </body>

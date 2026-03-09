@@ -1,0 +1,5 @@
+# Update Sitemap URL and sitemap.xml <loc> URLs if you use a different domain
+User-agent: *
+Allow: /
+
+Sitemap: https://csskitsune.com/sitemap.xml

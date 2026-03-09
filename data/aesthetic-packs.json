@@ -1,0 +1,118 @@
+{
+  "platforms": [
+    { "id": "cursor", "name": "Cursor / Claude / ChatGPT", "hint": "Universal prompt" },
+    { "id": "v0", "name": "v0 / Vercel AI", "hint": "React/UI generation" },
+    { "id": "figma", "name": "Figma AI", "hint": "Variable sets + prompts" },
+    { "id": "webflow", "name": "Webflow AI", "hint": "Custom CSS + prompts" },
+    { "id": "obs", "name": "OBS Studio", "hint": "Browser source overlays" },
+    { "id": "godot", "name": "Godot Engine", "hint": "Theme resources" },
+    { "id": "defold", "name": "Defold", "hint": "GUI styling" }
+  ],
+  "seasons": [
+    { "id": "spring", "name": "Spring", "modifier": "Seasonal mood: spring — renewal, softness, light." },
+    { "id": "summer", "name": "Summer", "modifier": "Seasonal mood: summer — clarity, warmth, full light." },
+    { "id": "autumn", "name": "Autumn", "modifier": "Seasonal mood: autumn — restraint, warmth, decay beauty." },
+    { "id": "winter", "name": "Winter", "modifier": "Seasonal mood: winter — stillness, purity, negative space." },
+    { "id": "none", "name": "None", "modifier": "" }
+  ],
+  "moods": [
+    { "id": "calm", "name": "Calm", "modifier": "Mood: calm, meditative — reduce visual noise." },
+    { "id": "bold", "name": "Bold", "modifier": "Mood: bold — stronger contrast, clearer hierarchy." },
+    { "id": "minimal", "name": "Minimal", "modifier": "Mood: minimal — fewer elements, more ma (negative space)." },
+    { "id": "rich", "name": "Rich", "modifier": "Mood: rich — allow subtle texture and depth." },
+    { "id": "none", "name": "None", "modifier": "" }
+  ],
+  "aesthetics": [
+    {
+      "id": "wabi-sabi",
+      "name": "Wabi-Sabi Neutral",
+      "culturalContext": "Embrace imperfection and simplicity. Muromachi-era tea room sensibility — weathered, quiet, unforced.",
+      "tokens": {
+        "bg": "#F5F0E8",
+        "text": "#2C2C2C",
+        "accent": "#8B7355",
+        "muted": "#6B6B6B",
+        "border": "#D4CFC4"
+      },
+      "spacing": { "scale": "4/8/16/32/64px", "name": "ma-ratio" },
+      "typography": { "ratio": "1.618", "weight": "light", "note": "Golden ratio, restrained" },
+      "motion": { "duration": "400ms", "easing": "ease", "style": "opacity-first" },
+      "styleDescription": "Muromachi minimalism — no gradients, no shadows above 1px. Let negative space lead.",
+      "codeExample": ":root { --shizen-bg: #F5F0E8; --shizen-text: #2C2C2C; --shizen-accent: #8B7355; }"
+    },
+    {
+      "id": "shinto",
+      "name": "Shinto Ceremonial",
+      "culturalContext": "Vermillion (torii), white (purity), gold (sacred). Shrine and ritual — clear hierarchy, ceremonial presence.",
+      "tokens": {
+        "bg": "#FFFEF9",
+        "text": "#1a1a1a",
+        "accent": "#C41E3A",
+        "muted": "#8B6914",
+        "gold": "#C9A227",
+        "border": "#E8E0D5"
+      },
+      "spacing": { "scale": "8/16/24/48/96px", "name": "ceremonial scale" },
+      "typography": { "ratio": "1.5", "weight": "medium", "note": "Readable, dignified" },
+      "motion": { "duration": "300ms", "easing": "ease-out", "style": "transform and opacity" },
+      "styleDescription": "Shinto ceremonial — vermillion accents on white, gold for emphasis. Clean edges, no blur.",
+      "codeExample": ":root { --shizen-bg: #FFFEF9; --shizen-accent: #C41E3A; --shizen-gold: #C9A227; }"
+    },
+    {
+      "id": "edo-ink",
+      "name": "Edo Ink",
+      "culturalContext": "Sumi-e monochrome. Ink wash and paper — gradations of black and grey, brush rhythm.",
+      "tokens": {
+        "bg": "#F8F6F3",
+        "text": "#1a1a1a",
+        "ink": "#2C2C2C",
+        "ink-light": "#6B6B6B",
+        "ink-wash": "#E0DED9",
+        "border": "#C4C0B8"
+      },
+      "spacing": { "scale": "4/8/16/32/64px", "name": "ma-ratio" },
+      "typography": { "ratio": "1.618", "weight": "light to regular", "note": "Brush-like rhythm" },
+      "motion": { "duration": "500ms", "easing": "ease-in-out", "style": "opacity and subtle scale" },
+      "styleDescription": "Edo ink — monochrome only. No color accents. Use opacity and weight for hierarchy.",
+      "codeExample": ":root { --shizen-bg: #F8F6F3; --shizen-ink: #2C2C2C; --shizen-ink-light: #6B6B6B; }"
+    },
+    {
+      "id": "sakura",
+      "name": "Sakura Season",
+      "culturalContext": "Spring pastels — blossom pink, new leaf, pale sky. Hanami and renewal.",
+      "tokens": {
+        "bg": "#FFF5F7",
+        "text": "#2D2A2A",
+        "accent": "#E8B4BC",
+        "muted": "#8B7A80",
+        "leaf": "#7A9B76",
+        "sky": "#D4E4ED",
+        "border": "#E8DEE0"
+      },
+      "spacing": { "scale": "6/12/24/48/72px", "name": "spring rhythm" },
+      "typography": { "ratio": "1.5", "weight": "light", "note": "Airy, soft" },
+      "motion": { "duration": "350ms", "easing": "ease", "style": "opacity-first, gentle" },
+      "styleDescription": "Sakura season — soft pinks and greens, no harsh contrast. Gradients allowed if subtle.",
+      "codeExample": ":root { --shizen-bg: #FFF5F7; --shizen-accent: #E8B4BC; --shizen-leaf: #7A9B76; }"
+    },
+    {
+      "id": "yoru",
+      "name": "Yoru (Night)",
+      "culturalContext": "Night — deep indigo, paper white, lantern warmth. Quiet and contemplative.",
+      "tokens": {
+        "bg": "#1E2A3A",
+        "text": "#F5F0E8",
+        "accent": "#7B9BB0",
+        "muted": "#9BA8B5",
+        "paper": "#2A3544",
+        "warm": "#C4A574",
+        "border": "#3A4A5A"
+      },
+      "spacing": { "scale": "4/8/16/32/64px", "name": "ma-ratio" },
+      "typography": { "ratio": "1.618", "weight": "light", "note": "Quiet, readable on dark" },
+      "motion": { "duration": "400ms", "easing": "ease", "style": "opacity-first, low motion" },
+      "styleDescription": "Yoru — deep indigo base, paper-white text. One warm accent (lantern). No bright white flash.",
+      "codeExample": ":root { --shizen-bg: #1E2A3A; --shizen-text: #F5F0E8; --shizen-accent: #7B9BB0; }"
+    }
+  ]
+}
