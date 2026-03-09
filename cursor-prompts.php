@@ -9,6 +9,9 @@ $canonical = SITE_URL . '/cursor-prompts.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <title><?php echo htmlspecialchars($title); ?></title>
   <meta name="description" content="<?php echo htmlspecialchars($description); ?>">
   <link rel="canonical" href="<?php echo htmlspecialchars($canonical); ?>">
@@ -77,7 +80,7 @@ $canonical = SITE_URL . '/cursor-prompts.php';
   <p><strong>How to use in Cursor:</strong> Paste the prompt into the chat when you ask for a component or page. Example: “Build a pricing section. [paste prompt above].” You can also add “Use CSS custom properties for the colors” if you want variables instead of hardcoded hex.</p>
 
   <footer>
-    <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="webflow-prompts.php">Webflow</a> · <a href="obs-prompts.php">OBS</a> · <a href="godot-theming.php">Godot</a> · <a href="guide.php">Guide</a> · <a href="spec.php">Spec</a>
+    <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="webflow-prompts.php">Webflow</a> · <a href="obs-prompts.php">OBS</a> · <a href="godot-theming.php">Godot</a> · <a href="defold-styling.php">Defold</a> · <a href="guide.php">Guide</a> · <a href="spec.php">Spec</a>
   </footer>
 </body>
 </html>

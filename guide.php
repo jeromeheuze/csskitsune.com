@@ -9,6 +9,9 @@ $canonical = SITE_URL . '/guide.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <title><?php echo htmlspecialchars($title); ?></title>
   <meta name="description" content="<?php echo htmlspecialchars($description); ?>">
   <link rel="canonical" href="<?php echo htmlspecialchars($canonical); ?>">
@@ -135,6 +138,7 @@ $canonical = SITE_URL . '/guide.php';
     <li><a href="webflow-prompts.php">Japanese style Webflow prompt pack — copy and paste</a> — Webflow AI + CSS variables.</li>
     <li><a href="obs-prompts.php">OBS overlay CSS prompts for Japanese stream aesthetics</a> — Browser source overlays.</li>
     <li><a href="godot-theming.php">Godot UI theming with Japanese aesthetics</a> — Theme resources, colors, spacing.</li>
+    <li><a href="defold-styling.php">Defold GUI styling — Shizen token system</a> — GUI scripts, colors, Lua.</li>
   </ul>
 
   <footer>

@@ -9,6 +9,9 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <title><?php echo htmlspecialchars($title); ?></title>
   <meta name="description" content="<?php echo htmlspecialchars($description); ?>">
   <link rel="canonical" href="<?php echo htmlspecialchars($canonical); ?>">
@@ -281,8 +284,8 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
           <p>Ma, wabi-sabi, kisetsukan — how they translate into UI and CSS. Practical guide with links to tokens and prompts.</p>
         </div>
         <div class="explore-card">
-          <a href="cursor-prompts.php" class="card-title">Cursor, Webflow, OBS & Godot</a>
-          <p>Copy-paste prompts and CSS for Cursor, Webflow, OBS overlays, and Godot theming. One page per platform.</p>
+          <a href="cursor-prompts.php" class="card-title">Cursor, Webflow, OBS, Godot & Defold</a>
+          <p>Copy-paste prompts and CSS for each platform. One page per tool.</p>
         </div>
       </div>
     </section>
@@ -330,7 +333,7 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
       </div>
     </div>
     <div class="copyright">
-      &copy; <?php echo date('Y'); ?> CSSKitsune &mdash; Part of the Japan Culture Network
+      &copy; <?php echo date('Y'); ?> CSSKitsune &mdash; Part of the Japan Culture Network · <a href="site-map.php">Sitemap</a>
     </div>
   </footer>
 </body>

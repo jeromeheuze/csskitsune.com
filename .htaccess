@@ -1,0 +1,2 @@
+# Custom 404 page (use /404.php if site is at root; if in a subdir use /subdir/404.php)
+ErrorDocument 404 /404.php
