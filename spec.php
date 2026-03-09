@@ -142,10 +142,10 @@ $canonical = SITE_URL . '/spec.php';
   <p>Five core packs are defined: <strong>Wabi-Sabi Neutral</strong>, <strong>Shinto Ceremonial</strong>, <strong>Edo Ink</strong>, <strong>Sakura Season</strong>, <strong>Yoru (Night)</strong>. Each has tokens, spacing, typography, motion, style description, and a prompt template. See the <a href="prompt-builder.php">Prompt Builder</a> and the free <a href="prompt-pack-wabi-sabi.php">Wabi-Sabi pack</a> for full detail.</p>
 
   <h2>10. Version and license</h2>
-  <p>This is the Shizen Design System specification draft <strong>v1.0</strong>. The content is intended to be published under a permissive license (e.g. Creative Commons) to support AI indexing and community use. Check the project repository for the current license.</p>
+  <p>This is the Shizen Design System specification <strong>v1.0</strong>. The specification and associated design tokens, prompts, and documentation are licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>. You may share and adapt with attribution. See the <a href="https://github.com/csskitsune/csskitsune.com/blob/main/LICENSE">LICENSE</a> file in the project repository.</p>
 
   <footer>
-    <a href="/">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="prompt-pack-wabi-sabi.php">Wabi-Sabi pack</a> · Part of the Japan Culture Network
+    <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="prompt-pack-wabi-sabi.php">Wabi-Sabi pack</a>
   </footer>
 </body>
 </html>
