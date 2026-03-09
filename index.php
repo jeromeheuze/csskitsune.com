@@ -1,7 +1,5 @@
 <?php
 require_once __DIR__ . '/includes/seo-config.php';
-$success = isset($_GET['s']) && $_GET['s'] === '1';
-$error = isset($_GET['e']) ? (int) $_GET['e'] : 0;
 $canonical = SITE_URL . '/';
 $title = 'CSSKitsune — The Japanese Design System for AI-Era Developers';
 $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and AI-ready prompts for authentic Japanese-style UI.';
@@ -68,7 +66,7 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
       position: relative;
     }
     main {
-      max-width: 36rem;
+      max-width: 40rem;
       width: 100%;
       text-align: center;
     }
@@ -102,57 +100,6 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
       color: var(--accent);
       margin: 0 0 1rem;
     }
-    .form-wrap {
-      background: var(--paper);
-      padding: 1.75rem;
-      border-radius: 6px;
-      margin-bottom: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    }
-    .form-wrap p {
-      margin: 0 0 1rem;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    input[type="email"] {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      background: #fff;
-      color: var(--text);
-    }
-    input[type="email"]:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(139,115,85,0.2);
-    }
-    button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--paper);
-      background: var(--accent);
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover { opacity: 0.9; }
-    button:disabled { opacity: 0.6; cursor: not-allowed; }
-    .message {
-      padding: 0.75rem;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-    .message.success { background: #e8f5e9; color: #2e7d32; }
-    .message.error { background: #ffebee; color: #c62828; }
     .teaser {
       font-size: 0.9rem;
       color: var(--muted);
@@ -164,6 +111,52 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
       border-radius: 0 4px 4px 0;
     }
     .teaser strong { color: var(--text); }
+    .explore {
+      margin: 2rem 0;
+      text-align: left;
+    }
+    .explore h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 1rem;
+      text-align: center;
+    }
+    .explore-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 32rem) {
+      .explore-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 48rem) {
+      .explore-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .explore-card {
+      background: var(--paper);
+      padding: 1.25rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .explore-card a.card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .explore-card a.card-title:hover { color: var(--accent); }
+    .explore-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
     footer {
       margin-top: auto;
       padding-top: 2rem;
@@ -268,30 +261,31 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
     <h1>The Japanese Design System for AI-Era Developers</h1>
     <p class="tagline">Shizen — aesthetic tokens, cultural vocabulary, and prompts for authentic Japanese-style UI.</p>
 
-    <?php if ($success): ?>
-      <div class="message success">Thanks. You're on the list — we'll send the first Shizen prompt pack soon.</div>
-    <?php elseif ($error === 1): ?>
-      <div class="message error">Please enter a valid email address.</div>
-    <?php elseif ($error === 2): ?>
-      <div class="message error">Something went wrong. Please try again.</div>
-    <?php endif; ?>
-
-    <div class="form-wrap">
-      <p>Get the first Shizen prompt pack free</p>
-      <form action="submit-email.php" method="post" id="signup">
-        <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-        <button type="submit">Notify me</button>
-      </form>
-    </div>
-
-    <div class="teaser">
-      <strong>Teaser:</strong> One prompt, one palette — wabi-sabi neutrals, ma-based spacing, and copy-paste ready output for Cursor, Figma, Webflow, and more.
-    </div>
-    <p style="margin: 0 0 2rem; font-size: 0.95rem;">
-      <a href="prompt-builder.php" style="color: var(--accent); font-weight: 500;">→ Shizen Prompt Builder</a> ·
-      <a href="prompt-pack-wabi-sabi.php" style="color: var(--accent);">Free Wabi-Sabi pack</a> ·
-      <a href="spec.php" style="color: var(--accent);">Spec v1.0</a>
-    </p>
+    <section class="explore" aria-labelledby="explore-heading">
+      <h2 id="explore-heading">Explore</h2>
+      <div class="explore-grid">
+        <div class="explore-card">
+          <a href="prompt-builder.php" class="card-title">Shizen Prompt Builder</a>
+          <p>Pick platform, aesthetic, season & mood → get a ready-to-paste AI prompt. Five palettes, live preview.</p>
+        </div>
+        <div class="explore-card">
+          <a href="prompt-pack-wabi-sabi.php" class="card-title">Free Wabi-Sabi pack</a>
+          <p>One palette, one prompt. Tokens, spacing, and copy-paste prompt — print or save as PDF.</p>
+        </div>
+        <div class="explore-card">
+          <a href="spec.php" class="card-title">Spec v1.0</a>
+          <p>Full specification: color tokens, ma-based spacing, typography, motion vocabulary, naming. CC BY 4.0.</p>
+        </div>
+        <div class="explore-card">
+          <a href="guide.php" class="card-title">Japanese UI principles guide</a>
+          <p>Ma, wabi-sabi, kisetsukan — how they translate into UI and CSS. Practical guide with links to tokens and prompts.</p>
+        </div>
+        <div class="explore-card">
+          <a href="cursor-prompts.php" class="card-title">Cursor, Webflow, OBS & Godot</a>
+          <p>Copy-paste prompts and CSS for Cursor, Webflow, OBS overlays, and Godot theming. One page per platform.</p>
+        </div>
+      </div>
+    </section>
   </main>
   <footer>
     <div class="network">
