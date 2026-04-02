@@ -311,10 +311,6 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
           <span>Ancient joinery of Japanese master craftsmen</span>
         </div>
         <div class="network-item">
-          <a href="https://japancollectorsguide.com" target="_blank" rel="noopener">🪙 Japan Collectors Guide</a>
-          <span>Coins, banknotes & Japanese collectibles</span>
-        </div>
-        <div class="network-item">
           <a href="https://e2japan.com" target="_blank" rel="noopener">🗾 E2Japan</a>
           <span>Explore Japan's landmarks, shrines & hidden spots</span>
         </div>
