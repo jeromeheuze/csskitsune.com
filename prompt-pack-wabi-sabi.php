@@ -173,6 +173,8 @@ $canonical = SITE_URL . '/prompt-pack-wabi-sabi.php';
   --shizen-border: #D4CFC4;
 }</code></pre>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     Shizen Design System · <a href="https://csskitsune.com">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="spec.php">Spec</a> · Part of the Japan Culture Network
   </footer>

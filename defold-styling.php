@@ -99,6 +99,8 @@ local yoru = {
     <p><strong>More palettes:</strong> Use the <a href="prompt-builder.php">Shizen Prompt Builder</a> and select “Defold” to get a prompt for Shinto, Sakura, or Edo Ink. Full token list in the <a href="spec.php">spec</a>.</p>
   </div>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="cursor-prompts.php">Cursor</a> · <a href="webflow-prompts.php">Webflow</a> · <a href="obs-prompts.php">OBS</a> · <a href="godot-theming.php">Godot</a> · <a href="guide.php">Guide</a> · <a href="spec.php">Spec</a>
   </footer>

@@ -95,6 +95,8 @@ $canonical = SITE_URL . '/webflow-prompts.php';
     <p><strong>All platforms:</strong> <a href="prompt-builder.php">Prompt Builder</a> · <a href="spec.php">Spec</a> · <a href="guide.php">Japanese UI principles guide</a></p>
   </div>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="cursor-prompts.php">Cursor</a> · <a href="obs-prompts.php">OBS</a> · <a href="godot-theming.php">Godot</a> · <a href="defold-styling.php">Defold</a> · <a href="guide.php">Guide</a> · <a href="spec.php">Spec</a>
   </footer>

@@ -268,6 +268,10 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
       <h2 id="explore-heading">Explore</h2>
       <div class="explore-grid">
         <div class="explore-card">
+          <a href="kitsune" class="card-title">Kitsune Web — Theme Maker</a>
+          <p>Fox-spirit palette, live CSS variable generator, and kitsune website aesthetics.</p>
+        </div>
+        <div class="explore-card">
           <a href="prompt-builder.php" class="card-title">Shizen Prompt Builder</a>
           <p>Pick platform, aesthetic, season & mood → get a ready-to-paste AI prompt. Five palettes, live preview.</p>
         </div>
@@ -290,6 +294,7 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
       </div>
     </section>
   </main>
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
   <footer>
     <div class="network">
       <h2>🏯 Japanese Culture Network</h2>

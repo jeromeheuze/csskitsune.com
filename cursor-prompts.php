@@ -79,6 +79,8 @@ $canonical = SITE_URL . '/cursor-prompts.php';
 
   <p><strong>How to use in Cursor:</strong> Paste the prompt into the chat when you ask for a component or page. Example: “Build a pricing section. [paste prompt above].” You can also add “Use CSS custom properties for the colors” if you want variables instead of hardcoded hex.</p>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="webflow-prompts.php">Webflow</a> · <a href="obs-prompts.php">OBS</a> · <a href="godot-theming.php">Godot</a> · <a href="defold-styling.php">Defold</a> · <a href="guide.php">Guide</a> · <a href="spec.php">Spec</a>
   </footer>

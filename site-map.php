@@ -4,6 +4,7 @@ $title = 'Sitemap | CSSKitsune';
 $canonical = SITE_URL . '/site-map.php';
 $pages = [
   'Home' => 'index.php',
+  'Kitsune Web — Theme Maker' => 'kitsune',
   'Prompt Builder' => 'prompt-builder.php',
   'Spec (v1.0)' => 'spec.php',
   'Guide — Japanese UI principles' => 'guide.php',
@@ -48,6 +49,7 @@ $pages = [
     <li><a href="<?php echo htmlspecialchars($url); ?>"><?php echo htmlspecialchars($label); ?></a></li>
     <?php endforeach; ?>
   </ul>
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
   <footer>
     <a href="index.php">CSSKitsune</a> · Shizen Design System
   </footer>

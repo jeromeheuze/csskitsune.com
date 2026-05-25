@@ -314,6 +314,8 @@ $canonical = SITE_URL . '/prompt-builder.php';
       </div>
     </div>
 
+    <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
     <footer>
       <a href="index.php">CSSKitsune</a> · <a href="prompt-pack-wabi-sabi.php">Wabi-Sabi pack</a> · <a href="spec.php">Spec</a> · Part of the Japan Culture Network
     </footer>

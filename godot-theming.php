@@ -96,6 +96,8 @@ border:  #3A4A5A</code></pre>
     <p><strong>All palettes:</strong> Use the <a href="prompt-builder.php">Shizen Prompt Builder</a> and select “Godot Engine” to get a prompt for Shinto, Sakura, Edo Ink, or Yoru. The <a href="spec.php">spec</a> has the full token list.</p>
   </div>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="cursor-prompts.php">Cursor</a> · <a href="webflow-prompts.php">Webflow</a> · <a href="obs-prompts.php">OBS</a> · <a href="defold-styling.php">Defold</a> · <a href="guide.php">Guide</a> · <a href="spec.php">Spec</a>
   </footer>

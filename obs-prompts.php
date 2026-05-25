@@ -97,6 +97,8 @@ body { font-family: system-ui, sans-serif; background: var(--shizen-bg); color: 
     <p><strong>More palettes:</strong> Use the <a href="prompt-builder.php">Shizen Prompt Builder</a> and choose “OBS Studio” as platform to get a prompt for any aesthetic (Sakura, Edo Ink, etc.).</p>
   </div>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="cursor-prompts.php">Cursor</a> · <a href="webflow-prompts.php">Webflow</a> · <a href="godot-theming.php">Godot</a> · <a href="defold-styling.php">Defold</a> · <a href="guide.php">Guide</a> · <a href="spec.php">Spec</a>
   </footer>

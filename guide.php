@@ -141,6 +141,8 @@ $canonical = SITE_URL . '/guide.php';
     <li><a href="defold-styling.php">Defold GUI styling — Shizen token system</a> — GUI scripts, colors, Lua.</li>
   </ul>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="spec.php">Spec</a> · <a href="prompt-pack-wabi-sabi.php">Wabi-Sabi pack</a>
   </footer>

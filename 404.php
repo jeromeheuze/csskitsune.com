@@ -23,11 +23,17 @@ require_once __DIR__ . '/includes/seo-config.php';
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .err-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
       text-align: center;
-      line-height: 1.6;
     }
     h1 { font-size: 1.5rem; font-weight: 600; margin: 0 0 0.5rem; }
     p { margin: 0 0 1rem; color: var(--muted); }
@@ -36,8 +42,11 @@ require_once __DIR__ . '/includes/seo-config.php';
   </style>
 </head>
 <body>
-  <h1>Page not found</h1>
-  <p>That page doesn’t exist or has moved.</p>
-  <a href="<?php echo htmlspecialchars(SITE_URL); ?>/">← Back to CSSKitsune</a>
+  <div class="err-main">
+    <h1>Page not found</h1>
+    <p>That page doesn’t exist or has moved.</p>
+    <a href="<?php echo htmlspecialchars(SITE_URL); ?>/">← Back to CSSKitsune</a>
+  </div>
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
 </body>
 </html>

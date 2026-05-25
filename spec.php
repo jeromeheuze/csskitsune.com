@@ -147,6 +147,8 @@ $canonical = SITE_URL . '/spec.php';
   <h2>10. Version and license</h2>
   <p>This is the Shizen Design System specification <strong>v1.0</strong>. The specification and associated design tokens, prompts, and documentation are licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>. You may share and adapt with attribution. See the <a href="license.php">license (text)</a>.</p>
 
+  <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
+
   <footer>
     <a href="index.php">CSSKitsune</a> · <a href="prompt-builder.php">Prompt Builder</a> · <a href="prompt-pack-wabi-sabi.php">Wabi-Sabi pack</a>
   </footer>
