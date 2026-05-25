@@ -268,7 +268,7 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
       <h2 id="explore-heading">Explore</h2>
       <div class="explore-grid">
         <div class="explore-card">
-          <a href="kitsune" class="card-title">Kitsune Web — Theme Maker</a>
+          <a href="kitsune/" class="card-title">Kitsune Web — Theme Maker</a>
           <p>Fox-spirit palette, live CSS variable generator, and kitsune website aesthetics.</p>
         </div>
         <div class="explore-card">

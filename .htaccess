@@ -3,5 +3,5 @@ ErrorDocument 404 /404.php
 
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^kitsune/?$ kitsune.php [L]
+RewriteRule ^kitsune\.php$ /kitsune/ [R=301,L]
 </IfModule>
