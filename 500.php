@@ -1,5 +1,5 @@
 <?php
-http_response_code(404);
+http_response_code(500);
 require_once __DIR__ . '/includes/seo-config.php';
 ?>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ require_once __DIR__ . '/includes/seo-config.php';
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <title>Page not found | CSSKitsune</title>
+  <title>Something went wrong | CSSKitsune</title>
   <meta name="robots" content="noindex, nofollow">
   <style>
     :root { --bg: #F5F0E8; --text: #2C2C2C; --muted: #6B6B6B; --accent: #8B7355; }
@@ -43,9 +43,9 @@ require_once __DIR__ . '/includes/seo-config.php';
 </head>
 <body>
   <div class="err-main">
-    <h1>Page not found</h1>
+    <h1>Something went wrong</h1>
     <script src="https://404fun.games/embed.js?site=csskitsune.com"></script>
-    <p>That page doesn’t exist or has moved.</p>
+    <p>We hit a server error. Please try again in a moment.</p>
     <a href="<?php echo htmlspecialchars(SITE_URL); ?>/">← Back to CSSKitsune</a>
   </div>
   <?php require __DIR__ . '/includes/shinto-promo.php'; ?>
