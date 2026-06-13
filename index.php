@@ -328,8 +328,12 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
           <span>Hoshi no Isan — Japanese-aesthetic space RPG</span>
         </div>
         <div class="network-item">
-          <a href="https://japaninpixels.com" target="_blank" rel="noopener">🗺️ Japan In Pixels</a>
-          <span>A pixel art map of Japanese culture</span>
+          <a href="https://uptownzero.com" target="_blank" rel="noopener">🏙️ Uptown Zero</a>
+          <span>Pixel art life sim MMO — start at zero, build your life</span>
+        </div>
+        <div class="network-item">
+          <a href="https://bookfairytales.com" target="_blank" rel="noopener">📚 Book Fairy Tales</a>
+          <span>AI-powered educational stories for kids</span>
         </div>
       </div>
     </div>
