@@ -1,0 +1,34 @@
+# CSSKitsune
+
+> Shizen Design System — the Japanese design language for AI-era developers: aesthetic tokens, cultural vocabulary, and copy-paste prompts for authentic Japanese-style UI across web, games, and streaming tools.
+
+CSSKitsune publishes **Shizen** (自然 — naturalness), an open design specification grounded in Japanese aesthetic principles: *ma* (negative space), seasonal palettes, typography rhythm, and motion vocabulary (*en*, *nagare*, *shizuka*). The interactive Prompt Builder covers five aesthetic packs (Wabi-Sabi, Shinto Ceremonial, Edo Ink, Sakura Season, Yoru) and seven platforms (Cursor/Claude, v0, Figma, Webflow, OBS, Godot, Defold). Specification, tokens, and prompts are licensed CC BY 4.0.
+
+Full catalog (all yokai themes, every page): see https://csskitsune.com/llms-full.txt
+
+## Core
+
+- [Home](https://csskitsune.com/): Landing hub — explore Shizen, the Kitsune theme maker, prompt builder, and guides.
+- [Shizen Prompt Builder](https://csskitsune.com/prompt-builder.php): Pick platform, aesthetic, season, and mood → ready-to-paste AI prompt with live aesthetic preview.
+- [Shizen Design System v1.0 — Specification](https://csskitsune.com/spec.php): Open spec for color tokens, ma-based spacing, typography, motion vocabulary, and naming. CC BY 4.0.
+- [Japanese UI Design Principles Guide](https://csskitsune.com/guide.php): How ma, wabi-sabi, and kisetsukan translate into UI and CSS, with links to tokens and prompts.
+- [Free Wabi-Sabi Prompt Pack](https://csskitsune.com/prompt-pack-wabi-sabi.php): One palette, one prompt — tokens, spacing, print- or PDF-friendly lead magnet.
+
+## Theme Makers
+
+- [Kitsune Web — Theme Maker](https://csskitsune.com/kitsune/): Fox-spirit palette, live CSS variable generator, and kitsune website aesthetics.
+- [Yokai CSS Themes](https://csskitsune.com/yokai/): Hub for 20 spirit-inspired CSS palettes — each with tokens, typography, and links to folklore on JapaneseMythicalCreatures.com.
+
+## Platform Prompts
+
+- [Cursor / Claude / ChatGPT Prompts](https://csskitsune.com/cursor-prompts.php): Copy-paste prompt for Japanese minimal UI in Cursor and LLM coding tools.
+- [Webflow Prompts](https://csskitsune.com/webflow-prompts.php): AI prompts and CSS custom properties for Japanese minimal UI in Webflow.
+- [OBS Overlay Prompts](https://csskitsune.com/obs-prompts.php): Browser-source-ready prompts and CSS for Japanese stream aesthetics.
+- [Godot UI Theming](https://csskitsune.com/godot-theming.php): Shizen tokens and palettes for Godot 4 theme resources.
+- [Defold GUI Styling](https://csskitsune.com/defold-styling.php): Shizen color and spacing tokens for Defold GUI with AI prompts.
+
+## Optional
+
+- [HTML Sitemap](https://csskitsune.com/site-map.php): Human-readable page index.
+- [License (CC BY 4.0)](https://csskitsune.com/license.php): Full Creative Commons license text for spec, tokens, and prompts.
+- Phase 2 paid platform packs (OBS kit, Godot UI kit, Webflow CSS pack, Figma variables): on hold — roadmap item, not yet published.

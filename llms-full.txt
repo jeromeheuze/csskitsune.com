@@ -1,0 +1,84 @@
+# CSSKitsune
+
+> Shizen Design System — the Japanese design language for AI-era developers: aesthetic tokens, cultural vocabulary, and copy-paste prompts for authentic Japanese-style UI across web, games, and streaming tools.
+
+CSSKitsune publishes **Shizen** (自然 — naturalness), an open design specification grounded in Japanese aesthetic principles: *ma* (negative space), seasonal palettes, typography rhythm, and motion vocabulary (*en*, *nagare*, *shizuka*). The site is plain PHP with no database. The Prompt Builder draws from five aesthetic packs in `data/aesthetic-packs.json` and supports Cursor/Claude, v0, Figma, Webflow, OBS, Godot, and Defold. The Yokai section offers 20 mythological-spirit CSS themes, each with a four-color palette, CSS custom properties, and cross-links to lore on JapaneseMythicalCreatures.com. Kitsune Web is a dedicated fox-spirit theme maker with a live CSS variable generator. Specification, tokens, and prompts are licensed CC BY 4.0. Part of the Japan Culture Network.
+
+Lean index for quick context: see https://csskitsune.com/llms.txt
+
+## Core Pages
+
+- [Home](https://csskitsune.com/): Landing hub — explore Shizen, the Kitsune theme maker, prompt builder, and guides.
+- [Shizen Prompt Builder](https://csskitsune.com/prompt-builder.php): Pick platform, aesthetic, season, and mood → ready-to-paste AI prompt with live aesthetic preview.
+- [Shizen Design System v1.0 — Specification](https://csskitsune.com/spec.php): Open spec for color tokens, ma-based spacing, typography, motion vocabulary, and naming. CC BY 4.0.
+- [Japanese UI Design Principles Guide](https://csskitsune.com/guide.php): How ma, wabi-sabi, and kisetsukan translate into UI and CSS, with links to tokens and prompts.
+- [Free Wabi-Sabi Prompt Pack](https://csskitsune.com/prompt-pack-wabi-sabi.php): One palette, one prompt — tokens, spacing, print- or PDF-friendly lead magnet.
+
+## Theme Makers
+
+- [Kitsune Web — Theme Maker](https://csskitsune.com/kitsune/): Fox-spirit palette, live CSS variable generator, and kitsune website aesthetics.
+- [Yokai CSS Themes — Hub](https://csskitsune.com/yokai/): Index of 20 spirit-inspired CSS palettes with tokens, typography, and folklore links.
+
+## Yokai CSS Themes (20)
+
+- [Kitsune 狐](https://csskitsune.com/kitsune/): Fox spirit of intelligence, beauty, and transformation — ember orange, twilight indigo, sacred gold.
+- [Tengu 天狗](https://csskitsune.com/yokai/tengu.php): Mountain goblins of wind, pride, and martial discipline — crimson red, mountain grey, deep cedar.
+- [Oni 鬼](https://csskitsune.com/yokai/oni.php): Demonic ogres of immense strength, horns, and iron will — cobalt blue skin, black iron, bone white.
+- [Tanuki 狸](https://csskitsune.com/yokai/tanuki.php): Shape-shifting raccoon dogs of mischief, warmth, and sake halls — warm brown, sake gold, cedar green.
+- [Yuki-onna 雪女](https://csskitsune.com/yokai/yuki-onna.php): The snow woman — pale beauty, winter silence, and fatal cold — ice white, frozen blue, pale lilac.
+- [Kappa 河童](https://csskitsune.com/yokai/kappa.php): River imps with bowls of water, cucumber offerings, and muddy wit — river teal, lily green, muddy amber.
+- [Baku 獏](https://csskitsune.com/yokai/baku.php): Dream-eaters who devour nightmares and guard restless sleep — dream purple, cloud grey, pearl.
+- [Ryu (Dragon) 龍](https://csskitsune.com/yokai/ryu.php): Celestial dragons of rain, imperial power, and storm wisdom — imperial green, storm silver, gold.
+- [Jorōgumo 絡新婦](https://csskitsune.com/yokai/jorogumo.php): Spider women who weave silk, shadow, and seductive danger — deep crimson, silk white, shadow black.
+- [Bakeneko 化け猫](https://csskitsune.com/yokai/bakeneko.php): Supernatural cats — amber eyes, night prowling, household hauntings — slate grey, amber, night navy.
+- [Raijin 雷神](https://csskitsune.com/yokai/raijin.php): Thunder god of drums, lightning rings, and storm fury — electric yellow, storm grey, thunder black.
+- [Fujin 風神](https://csskitsune.com/yokai/fujin.php): Wind god carrying storms in his bag across sky and sea — sky turquoise, cloud white, wind grey.
+- [Nue 鵺](https://csskitsune.com/yokai/nue.php): Chimera beasts — monkey head, tanuki body, tiger limbs, serpent tail — chimera tones, moonlit grey, rust.
+- [Gashadokuro がしゃどくろ](https://csskitsune.com/yokai/gashadokuro.php): Giant skeletons formed from war dead, rattling in the night — bone white, void black, blood rust.
+- [Shisa シーサー](https://csskitsune.com/yokai/shisa.php): Okinawan guardian lions — terracotta, coral shores, warding flame — terracotta, sea foam, coral.
+- [Yamata no Orochi 八岐大蛇](https://csskitsune.com/yokai/yamata-no-orochi.php): Eight-headed serpent of floods, sake, and heroic slaying — serpent green, storm purple, crimson.
+- [Yatagarasu 八咫烏](https://csskitsune.com/yokai/yatagarasu.php): Three-legged sun crow guiding emperors through divine paths — raven black, solar gold, blood red.
+- [Tsuchigumo 土蜘蛛](https://csskitsune.com/yokai/tsuchigumo.php): Earth spiders — cave dwellers, web silver, buried grudges — earth brown, web silver, cave black.
+- [Ningyo 人魚](https://csskitsune.com/yokai/ningyo.php): Merfolk of longevity, pearl tears, and deep-sea longing — deep sea teal, pearl pink, seafoam.
+- [Inari 稲荷](https://csskitsune.com/yokai/inari.php): Kami of rice, fox messengers, torii tunnels, and harvest gold — sacred red, harvest gold, shrine white.
+
+## Platform Prompt Pages
+
+- [Cursor / Claude / ChatGPT Prompts](https://csskitsune.com/cursor-prompts.php): Copy-paste prompt for Japanese minimal UI in Cursor and LLM coding tools.
+- [Webflow Prompts](https://csskitsune.com/webflow-prompts.php): AI prompts and CSS custom properties for Japanese minimal UI in Webflow.
+- [OBS Overlay Prompts](https://csskitsune.com/obs-prompts.php): Browser-source-ready prompts and CSS for Japanese stream aesthetics.
+- [Godot UI Theming](https://csskitsune.com/godot-theming.php): Shizen tokens and palettes for Godot 4 theme resources.
+- [Defold GUI Styling](https://csskitsune.com/defold-styling.php): Shizen color and spacing tokens for Defold GUI with AI prompts.
+
+## Shizen Aesthetic Packs (Prompt Builder)
+
+These five packs are selectable in the Prompt Builder; only Wabi-Sabi has a dedicated standalone page.
+
+- Wabi-Sabi Neutral: Muromachi tea-room sensibility — weathered, quiet, unforced neutrals (#F5F0E8 bg).
+- Shinto Ceremonial: Torii vermillion, shrine white, sacred gold — ceremonial hierarchy and clean edges.
+- Edo Ink: Sumi-e monochrome — ink wash gradations, brush rhythm, paper texture.
+- Sakura Season: Spring pastels — renewal, softness, cherry-blossom palette.
+- Yoru (Night): Deep indigo and paper white — stillness, night atmosphere, restrained contrast.
+
+## Japan Culture Network
+
+Related sites linked from the CSSKitsune footer:
+
+- [Japanese Mythical Creatures](https://japanesemythicalcreatures.com): Yokai, oni, and kitsune folklore directory — paired with CSSKitsune yokai themes.
+- [Kohibou](https://kohibou.com): Japanese coffee culture and kissaten guides.
+- [ShrinePuzzle](https://shrinepuzzle.com): Japanese board games and traditional games.
+- [Japanese Wood Joints](https://japanesewoodjoints.com): Ancient joinery of Japanese master craftsmen.
+- [E2Japan](https://e2japan.com): Explore Japan's landmarks, shrines, and hidden spots.
+- [The 725 Club](https://the725club.com): SNES and Super Famicom collection tracker.
+- [Spaceship Adventures](https://spaceshipadventures.com): Hoshi no Isan — Japanese-aesthetic space RPG.
+- [Uptown Zero](https://uptownzero.com): Pixel art life sim MMO — start at zero, build your life.
+- [Book Fairy Tales](https://bookfairytales.com): AI-powered educational stories for kids.
+
+## Optional
+
+- [HTML Sitemap](https://csskitsune.com/site-map.php): Human-readable page index.
+- [License (CC BY 4.0)](https://csskitsune.com/license.php): Full Creative Commons license text for spec, tokens, and prompts.
+- [Sitemap XML](https://csskitsune.com/sitemap.xml): Machine-readable URL list for search engines (does not include individual yokai theme pages).
+- [Robots.txt](https://csskitsune.com/robots.txt): Crawler directives — allows all agents.
+- Phase 2 paid platform packs (OBS kit, Godot UI kit, Webflow CSS pack, Figma variables, WordPress block theme): on hold — roadmap item, not yet published.
+- Figma AI and v0/Vercel AI prompt variants: available via Prompt Builder only — no standalone pages yet.

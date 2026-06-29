@@ -44,7 +44,7 @@ require_once __DIR__ . '/includes/seo-config.php';
 <body>
   <div class="err-main">
     <h1>Something went wrong</h1>
-    <script src="https://404fun.games/embed.js?site=csskitsune.com"></script>
+    <script src="https://newsroompuzzles.com/embed.js?site=csskitsune.com&game=sudoku"></script>
     <p>We hit a server error. Please try again in a moment.</p>
     <a href="<?php echo htmlspecialchars(SITE_URL); ?>/">← Back to CSSKitsune</a>
   </div>
