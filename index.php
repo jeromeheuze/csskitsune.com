@@ -304,12 +304,12 @@ $description = 'Shizen Design System: aesthetic tokens, cultural vocabulary, and
           <span>Yokai, oni & kitsune folklore directory</span>
         </div>
         <div class="network-item">
-          <a href="https://kohibou.com" target="_blank" rel="noopener">☕ Kohibou</a>
-          <span>Japanese coffee culture & kissaten guides</span>
+          <a href="https://pixelgacha.com/" target="_blank" rel="noopener">🎰 Pixel Gacha</a>
+          <span>Verified itch.io pixel-art gacha pulls</span>
         </div>
         <div class="network-item">
-          <a href="https://shrinepuzzle.com" target="_blank" rel="noopener">🎮 ShrinePuzzle</a>
-          <span>Japanese board games & traditional games</span>
+          <a href="https://japanradioguide.com/" target="_blank" rel="noopener">📻 Japan Radio Guide</a>
+          <span>Classic Japanese ham radio reference</span>
         </div>
         <div class="network-item">
           <a href="https://japanesewoodjoints.com" target="_blank" rel="noopener">🪵 Japanese Wood Joints</a>
